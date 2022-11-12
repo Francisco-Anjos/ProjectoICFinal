@@ -1,4 +1,13 @@
 import random 
+
+#Player and enemy classes in order(health,Mana,Armor,Weapon,Initiative)
+WarriorClass = [32,5,2,5,2]
+PriestClass = [20,25,0,2,6]
+OrcClass1 = [15,0,2,2,2]
+OrcClass2 = [15,0,2,2,2]
+OrcClass3 = [15,0,2,2,2]
+
+
 #Action phases per player class and enemy class 
 #Warriorclass turn 
 def WarriorTurn(HP,WP,MP,AP,Rd):
@@ -8,7 +17,7 @@ def WarriorTurn(HP,WP,MP,AP,Rd):
     Action = input()
     if Action == 1:
         print("Choose your Spell")
-        print("1:Rushdown")
+        print("1:Rushdown(Rush at a target and strike them)")
         Spell = input()
         if Spell == 1:
             Target = input("Choose target:")
@@ -48,8 +57,8 @@ def PriestTurn(HP,WP,MP,AP,Ex,He):
     Action = input()
     if Action == 1:
         print("Choose your Spell")
-        print("1:Mend")
-        print("2:Exorcism")
+        print("1:Mend(Heal target player)")
+        print("2:Exorcism(Exorcise target enemy dealing damage)")
         Spell = input()
         if Spell == 1:
             Target = input("Choose target:")
