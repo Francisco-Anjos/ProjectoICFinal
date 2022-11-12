@@ -1,13 +1,22 @@
 import random 
 
-#Player and enemy class stats in order(health,Mana,Armor,Weapon,Initiative)
-WarriorClass = ["Warrior",32,5,2,5,2]
-PriestClass = ["Priest",20,25,0,2,6]
-OrcClass1 = ["Orc1",15,0,2,2,2]
-OrcClass2 = ["Orc2",15,0,2,2,2]
-OrcClass3 = ["Orc3",15,0,2,2,2]
-OrcClass4 = ["Orc4",15,0,2,2,2]
+#Player and enemy class stats in order(Name,health,Mana,Armor,Weapon,Initiative,Initiativecounter)
+WarriorClass = ["Warrior",32,5,2,5,2,0]
+PriestClass = ["Priest",20,25,0,2,6,0]
+OrcClass1 = ["Orc1",15,0,2,2,2,0]
+OrcClass2 = ["Orc2",15,0,2,2,2,0]
+OrcClass3 = ["Orc3",15,0,2,2,2,0]
+OrcClass4 = ["Orc4",15,0,2,2,2,0]
 ClassList = [PriestClass,WarriorClass,OrcClass1,OrcClass2,OrcClass3,OrcClass4]
+
+#Initiative rolls
+def RollInit(Class):
+    Init = random.randint(1,21) + Class[5]
+    Class[6] = Init
+
+def InitFase (ListOfCharacter):
+    for Class in ListOfCharacter:
+        RollInit(Class)
 
 
 #Action phases per player class and enemy class 
@@ -114,39 +123,66 @@ def PriestTurn(HP1,HP2,HP3,HP4,HP5,HP6,WP,MP,AP1,AP2,AP3,AP4):
 #Orc1
 def Orc1Turn(HP1,HP2,WP,AP1,AP2):
             print("The first Orc strikes!")
-            print(random.random())
-            if random.ramdom == 0:
+            print(random.randint(1,3))
+            if random.randint == 1:
              HP1 = HP1 - (WP -AP1)
-            elif random.ramdom == 1:
+            elif random.randint == 2:
              HP2 = HP2 - (WP -AP2)
             return(HP1,HP2)  
 
 #Orc2
 def Orc2Turn(HP1,HP2,WP,AP1,AP2):
             print("The Second Orc strikes!")
-            print(random.random())
-            if random.ramdom == 0:
+            print(random.randint(1,3))
+            if random.randint == 1:
              HP1 = HP1 - (WP -AP1)
-            elif random.ramdom == 1:
+            elif random.randint == 2:
              HP2 = HP2 - (WP -AP2)
-            return(HP1,HP2) 
+            return(HP1,HP2)  
 
 #Orc3    
 def Orc3Turn(HP1,HP2,WP,AP1,AP2):
             print("The third Orc strikes!")
-            print(random.random())
-            if random.ramdom == 0:
+            print(random.randint(1,3))
+            if random.randint == 1:
              HP1 = HP1 - (WP -AP1)
-            elif random.ramdom == 1:
+            elif random.randint == 2:
              HP2 = HP2 - (WP -AP2)
-            return(HP1,HP2)
+            return(HP1,HP2)  
 
 #Orc4
 def Orc4Turn(HP1,HP2,WP,AP1,AP2):
             print("The forth Orc strikes!")
-            print(random.random())
-            if random.ramdom == 0:
+            print(random.randint(1,3))
+            if random.randint == 1:
              HP1 = HP1 - (WP -AP1)
-            elif random.ramdom == 1:
+            elif random.randint == 2:
              HP2 = HP2 - (WP -AP2)
-            return(HP1,HP2)          
+            return(HP1,HP2)  
+
+#main game loop 
+while (OrcClass1[1]+OrcClass2[1]+OrcClass3[1]+OrcClass4[1]<= 0 or WarriorClass[1]<=0 and PriestClass[1]<=0):
+    #New init value for each class
+   InitFase(ClassList)
+
+    #Sortint by the rolls   
+   ClassList.sort(key = lambda CL:CL[6]) #lambda sorts CL[6] inside ListCLass, like for function 
+   print(ClassList[0][0], ClassList[1][0])
+
+   for i in ClassList:
+        if i[6] == WarriorClass[6]: #HP1,HP2,HP3,HP4,WP,MP,AP1,AP2,AP3,AP4
+            Warrior = WarriorTurn(OrcClass1[1], OrcClass2[1], OrcClass3[1], OrcClass4[1], WarriorClass[4], WarriorClass[2], OrcClass1[3],OrcClass2[3],OrcClass3[3],OrcClass4[3])
+        elif i[6] == PriestClass[6]: #HP1,HP2,HP3,HP4,HP5,HP6,WP,MP,AP1,AP2,AP3,AP4 
+            Priest = PriestTurn(OrcClass1[1], OrcClass2[1], OrcClass3[1], OrcClass4[1], WarriorClass[1], PriestClass[1], PriestClass[4], PriestClass[2],OrcClass1[3],OrcClass2[3],OrcClass3[3],OrcClass4[3] )
+        elif i[6] == OrcClass1[6]: #HP1,HP2,WP,AP1,AP2
+            orc1 = Orc1Turn(WarriorClass[1], PriestClass[1], OrcClass1[4], WarriorClass[3], PriestClass[3])
+        elif i[6] == OrcClass2[6]: #HP1,HP2,WP,AP1,AP2
+            orc2 = Orc2Turn(WarriorClass[1], PriestClass[1], OrcClass2[4], WarriorClass[3], PriestClass[3])
+        elif i[6] == OrcClass3[6]: #HP1,HP2,WP,AP1,AP2
+            orc3 = Orc3Turn(WarriorClass[1], PriestClass[1], OrcClass3[4], WarriorClass[3], PriestClass[3])
+        elif i[6] == OrcClass4[6]: #HP1,HP2,WP,AP1,AP2
+            orc4 = Orc4Turn(WarriorClass[1], PriestClass[1], OrcClass4[4], WarriorClass[3], PriestClass[3])
+        else:
+            print("Game Over!!!")
+            print("Better luck next time...")
+            quit()
