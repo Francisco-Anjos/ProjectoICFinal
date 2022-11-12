@@ -17,40 +17,40 @@ def WarriorTurn(HP1,HP2,HP3,HP4,WP,MP,AP1,AP2,AP3,AP4):
     print("1:Magic")
     print("2:Attack")
     Action = input()
-    if Action == 1:
+    if Action == "1":
         print("Choose your Spell")
         print("1:Rushdown(Rush at a target and strike them)")
         Spell = input()
-        if Spell == 1:
+        if Spell == "1":
             Target = input("Choose target:")
-            if Target == 1:
+            if Target == "1":
                 print("You casted Rushdown on the first Orc")
                 MP = MP - 5
                 HP1 = HP1 - ((WP + random.ranint(1,5)))
-            elif Target == 2:
+            elif Target == "2":
                 print("You casted Rushdown on the second Orc")
                 MP = MP - 5
                 HP2 = HP2 - ((WP + random.ranint(1,5)))
-            elif Target == 3:
+            elif Target == "3":
                 print("You casted Rushdown on the third Orc")
                 MP = MP - 5
                 HP3 = HP3 - ((WP + random.ranint(1,5)))
-            elif Target == 4:
+            elif Target == "4":
                 print("You casted Rushdown on the forth Orc")
                 MP = MP - 5
                 HP4 = HP4 - ((WP + random.ranint(1,5)))
-    elif Action ==2:
+    elif Action =="2":
          Target = input("Choose target:")
-         if Target == 1:
+         if Target == "1":
             print("You struck the first Orc")
             HP1 = HP1 - (WP - AP1)
-         elif Target == 2:
+         elif Target == "2":
             print("You struck the second Orc")
             HP2 = HP2 - (WP - AP2)
-         elif Target == 3:
+         elif Target == "3":
             print("You struck the third Orc")
             HP3 = HP3 - (WP - AP3)
-         elif Target == 4:
+         elif Target == "4":
             print("You struck the forth Orc")
             HP4 = HP4 - (WP - AP4)
             return(HP1,HP2,HP3,HP4,MP)
@@ -61,51 +61,51 @@ def PriestTurn(HP1,HP2,HP3,HP4,HP5,HP6,WP,MP,AP1,AP2,AP3,AP4):
     print("1:Magic")
     print("2:Attack")
     Action = input()
-    if Action == 1:
+    if Action == "1":
         print("Choose your Spell")
         print("1:Mend(Heal target player)")
         print("2:Exorcism(Exorcise target enemy dealing damage)")
         Spell = input()
-        if Spell == 1:
+        if Spell == "1":
             Target = input("Choose target:")
-            if Target == 1:
+            if Target == "1":
                 print("You mended your wounds.")
                 MP = MP - 3
                 HP5 = HP5 + (random.randint(1,7)+ WP)
-            elif Target == 2:
+            elif Target == "2":
                 print("You mended your wounds.")
                 MP = MP - 3
                 HP6 = HP6 + (random.randint(1,7) + WP)
-        elif Spell == 2:
+        elif Spell == "2":
             Target = input("Choose target:")
-            if Target == 1:
+            if Target == "1":
                 print("You casted Exorcism on the first Orc.")
                 HP1 = HP1 - (random.randint(1,5) * 2)
                 MP = MP - 5
-            elif Target == 2:
+            elif Target == "2":
                 print("You casted Exorcism on the second Orc.")
                 HP2 = HP2 - (random.randint(1,5) * 2)
                 MP = MP - 5
-            elif Target == 3:
+            elif Target == "3":
                 print("You casted Exorcism on the third Orc.")
                 HP3 = HP3 - (random.randint(1,5) * 2)
                 MP = MP - 5
-            elif Target == 4:
+            elif Target == "4":
                 print("You casted Exorcism on the forth Orc.")
                 HP4 = HP4 - (random.randint(1,5) * 2)
                 MP = MP - 5
-    elif Action ==2:
+    elif Action =="2":
          Target = input("Choose target:")
-         if Target == 1:
+         if Target == "1":
             print("You struck the first Orc.")
             HP1 = HP1 - (WP - AP1)
-         elif Target == 2:
+         elif Target == "2":
             print("You struck the second Orc.")
             HP2 = HP2 - (WP - AP2)
-         elif Target == 3:
+         elif Target == "3":
             print("You struck the third Orc.")
             HP3 = HP3 - (WP - AP3)
-         elif Target == 4:
+         elif Target == "4":
             print("You struck the forth Orc.")
             HP4 = HP4 - (WP - AP4)
             return(HP1,HP2,HP3,HP4,HP5,HP6,MP)
