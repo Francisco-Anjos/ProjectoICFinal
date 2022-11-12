@@ -1,12 +1,12 @@
 import random 
 
 #Player and enemy class stats in order(health,Mana,Armor,Weapon,Initiative)
-WarriorClass = [32,5,2,5,2]
-PriestClass = [20,25,0,2,6]
-OrcClass1 = [15,0,2,2,2]
-OrcClass2 = [15,0,2,2,2]
-OrcClass3 = [15,0,2,2,2]
-OrcClass4 = [15,0,2,2,2]
+WarriorClass = ["Warrior",32,5,2,5,2]
+PriestClass = ["Priest",20,25,0,2,6]
+OrcClass1 = ["Orc1",15,0,2,2,2]
+OrcClass2 = ["Orc2",15,0,2,2,2]
+OrcClass3 = ["Orc3",15,0,2,2,2]
+OrcClass4 = ["Orc4",15,0,2,2,2]
 ClassList = [PriestClass,WarriorClass,OrcClass1,OrcClass2,OrcClass3,OrcClass4]
 
 
